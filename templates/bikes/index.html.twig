@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bikes{% endblock %}
+
+{% block body %}
+<h1>Bicycles ({{ bikes|length }})</h1>
+<style>
+    {# .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; } #}
+</style>
+<div class="container">
+    
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add Bicycle
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Bike</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Name" aria-label="Name">
+                        </div>
+                        <div class="col">
+                            <select id="inputBrand" class="form-select">
+                                <option selected>Choose Brand</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:10px">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Description" aria-label="desc">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Material" aria-label="material">
+                        </div>
+                        <div class="col">
+                            <select id="inputGear" class="form-select">
+                                <option selected>Choose Gear #</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="row" style="margin-top:10px">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Image Url" aria-label="img">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Type" aria-label="type">
+                        </div>
+                        <div class="col">
+                            <select id="inputwheel" class="form-select">
+                                <option selected>Choose Wheel #</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top:20px;">
+        {% for bike in bikes %}
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+<img src="https://media.istockphoto.com/id/1457093031/photo/motorcycle-parked-on-the-road.jpg?s=2048x2048&w=is&k=20&c=6q5v_HK7SWreDTNNaa59D5WiO_KMRc7SuCnJ8wZluOM=" class="card-img-top" alt="...">
+
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ bike.title }}</h5>
+                        <p class="card-text">{{ bike.description ?? 'Not available' }}</p>
+                        <a href="/bikes/{{ bike.id }}" class="btn btn-primary">Info</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+{% endblock %}
