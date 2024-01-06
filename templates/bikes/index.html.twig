@@ -24,6 +24,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                {{ form_start(form) }}
                     <div class="row">
                         <div class="col">
                             <input type="text" class="form-control" placeholder="Name" aria-label="Name">
@@ -65,7 +66,7 @@
                         </div>
 
                     </div>
-
+                    {{ form_end(form) }}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
